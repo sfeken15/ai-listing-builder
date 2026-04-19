@@ -1,0 +1,279 @@
+/* ============================================================
+   ZINC DESIGN SYSTEM — TOKENS
+   ============================================================ */
+
+/* ---------- Primitive Tokens (never use directly) ---------- */
+:root {
+  /* Zinc neutral */
+  --zinc-white: #ffffff;
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-850: #1e1e21;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+  --zinc-black: #000000;
+
+  /* Graffiti (Teal / Primary) */
+  --graffiti-50: #f0fdf9;
+  --graffiti-100: #ccfbef;
+  --graffiti-200: #99f6df;
+  --graffiti-300: #5fe9d0;
+  --graffiti-400: #2dd4bf;
+  --graffiti-500: #15b79e;
+  --graffiti-600: #0d9488;
+  --graffiti-700: #107569;
+  --graffiti-800: #115e56;
+  --graffiti-900: #134e48;
+
+  /* Blurple (Purple / Secondary) */
+  --blurple-50: #f0edff;
+  --blurple-100: #dee0ff;
+  --blurple-200: #c5c2ff;
+  --blurple-300: #a99dff;
+  --blurple-400: #8d81ff;
+  --blurple-500: #7c6fef;
+  --blurple-600: #683dee;
+  --blurple-700: #5228d0;
+  --blurple-800: #4020a8;
+  --blurple-900: #311880;
+
+  /* Alpha channels */
+  --zinc-alpha-50: rgba(255,255,255,0.04);
+  --zinc-alpha-100: rgba(255,255,255,0.06);
+  --zinc-alpha-200: rgba(255,255,255,0.08);
+  --zinc-alpha-300: rgba(255,255,255,0.12);
+
+  /* Hologram gradient */
+  --hologram: linear-gradient(90deg, #60a5fa 0%, #34d399 25%, #a78bfa 50%, #f9a8d4 75%, #93c5fd 100%);
+
+  /* Typography */
+  --font-sans: "General Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-default: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ---------- Semantic Tokens — Dark Mode (default) ---------- */
+:root,
+.dark,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-page: #0d0d0f;
+  --bg-surface: var(--zinc-900);
+  --bg-surface-raised: var(--zinc-850);
+  --bg-surface-overlay: var(--zinc-800);
+  --bg-subtle: var(--zinc-alpha-100);
+  --bg-muted: var(--zinc-alpha-200);
+  --bg-inverse: var(--zinc-white);
+  --bg-brand-subtle: rgba(21, 183, 158, 0.08);
+  --bg-brand-muted: rgba(21, 183, 158, 0.14);
+  --bg-brand: var(--graffiti-500);
+  --bg-brand-hover: var(--graffiti-600);
+  --bg-accent-subtle: rgba(104, 61, 238, 0.08);
+  --bg-accent-muted: rgba(104, 61, 238, 0.14);
+  --bg-accent: var(--blurple-600);
+  --bg-accent-hover: var(--blurple-700);
+
+  /* Text */
+  --text-primary: var(--zinc-50);
+  --text-secondary: var(--zinc-400);
+  --text-tertiary: var(--zinc-500);
+  --text-disabled: var(--zinc-600);
+  --text-inverse: var(--zinc-950);
+  --text-on-brand: var(--zinc-white);
+  --text-brand: var(--graffiti-400);
+  --text-accent: var(--blurple-400);
+
+  /* Borders */
+  --border-default: var(--zinc-800);
+  --border-strong: var(--zinc-700);
+  --border-subtle: var(--zinc-alpha-100);
+  --border-inverse: var(--zinc-200);
+  --border-brand: var(--graffiti-600);
+  --border-accent: var(--blurple-600);
+  --border-focus: var(--graffiti-500);
+
+  /* Icons */
+  --icon-default: var(--zinc-300);
+  --icon-subtle: var(--zinc-500);
+  --icon-disabled: var(--zinc-700);
+  --icon-inverse: var(--zinc-900);
+  --icon-brand: var(--graffiti-400);
+  --icon-accent: var(--blurple-400);
+
+  /* Status */
+  --status-success-bg: rgba(21, 183, 158, 0.12);
+  --status-success-text: var(--graffiti-300);
+  --status-warning-bg: rgba(251, 191, 36, 0.12);
+  --status-warning-text: #fbbf24;
+  --status-error-bg: rgba(239, 68, 68, 0.12);
+  --status-error-text: #f87171;
+  --status-info-bg: rgba(96, 165, 250, 0.12);
+  --status-info-text: #93c5fd;
+
+  /* Component — Buttons */
+  --btn-primary-bg: var(--graffiti-500);
+  --btn-primary-bg-hover: var(--graffiti-600);
+  --btn-primary-text: var(--zinc-white);
+  --btn-secondary-bg: var(--zinc-alpha-100);
+  --btn-secondary-bg-hover: var(--zinc-alpha-200);
+  --btn-secondary-text: var(--zinc-100);
+  --btn-secondary-border: var(--zinc-800);
+  --btn-ghost-bg: transparent;
+  --btn-ghost-bg-hover: var(--zinc-alpha-100);
+  --btn-ghost-text: var(--zinc-300);
+  --btn-ghost-border: var(--zinc-800);
+  --btn-accent-bg: var(--blurple-600);
+  --btn-accent-bg-hover: var(--blurple-700);
+  --btn-accent-text: var(--zinc-white);
+  --btn-destructive-bg: #dc2626;
+  --btn-destructive-bg-hover: #b91c1c;
+  --btn-destructive-text: var(--zinc-white);
+  --btn-destructive-outline-bg: transparent;
+  --btn-destructive-outline-bg-hover: rgba(239, 68, 68, 0.08);
+  --btn-destructive-outline-text: #f87171;
+  --btn-destructive-outline-border: #dc2626;
+  --btn-destructive-ghost-bg: transparent;
+  --btn-destructive-ghost-bg-hover: rgba(239, 68, 68, 0.08);
+  --btn-destructive-ghost-text: #f87171;
+  --btn-destructive-link-text: #f87171;
+  --btn-destructive-link-text-hover: #fca5a5;
+
+  /* Component — Inputs */
+  --input-bg: var(--zinc-alpha-50);
+  --input-bg-focus: var(--zinc-alpha-100);
+  --input-border: var(--zinc-800);
+  --input-border-focus: var(--graffiti-500);
+  --input-text: var(--zinc-100);
+  --input-placeholder: var(--zinc-600);
+  --input-radius: 0.75rem;
+
+  /* Component — Cards */
+  --card-bg: var(--zinc-900);
+  --card-bg-hover: var(--zinc-850);
+  --card-border: var(--zinc-800);
+  --card-active-bg: rgba(21, 183, 158, 0.06);
+  --card-active-border: var(--graffiti-600);
+  --card-radius: 1rem;
+
+  /* Component — Badges */
+  --badge-brand-bg: rgba(21, 183, 158, 0.14);
+  --badge-brand-text: var(--graffiti-300);
+  --badge-accent-bg: rgba(104, 61, 238, 0.14);
+  --badge-accent-text: var(--blurple-300);
+  --badge-neutral-bg: var(--zinc-alpha-200);
+  --badge-neutral-text: var(--zinc-400);
+  --badge-success-bg: rgba(21, 183, 158, 0.12);
+  --badge-success-text: var(--graffiti-300);
+  --badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --badge-warning-text: #fbbf24;
+  --badge-error-bg: rgba(239, 68, 68, 0.12);
+  --badge-error-text: #f87171;
+
+  /* Component — Tags */
+  --tag-bg: var(--zinc-alpha-100);
+  --tag-text: var(--zinc-300);
+  --tag-border: var(--zinc-800);
+  --tag-selected-bg: rgba(21, 183, 158, 0.12);
+  --tag-selected-text: var(--graffiti-300);
+  --tag-selected-border: var(--graffiti-700);
+
+  /* Component — Step Indicators */
+  --step-bg: var(--zinc-700);
+  --step-bg-active: var(--graffiti-500);
+  --step-bg-done: var(--graffiti-700);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+/* ---------- Light Mode ---------- */
+.light,
+[data-theme="light"] {
+  --bg-page: var(--zinc-50);
+  --bg-surface: var(--zinc-white);
+  --bg-surface-raised: var(--zinc-50);
+  --bg-surface-overlay: var(--zinc-100);
+  --bg-subtle: rgba(0,0,0,0.03);
+  --bg-muted: rgba(0,0,0,0.05);
+  --bg-inverse: var(--zinc-950);
+  --bg-brand-subtle: rgba(21, 183, 158, 0.08);
+  --bg-brand-muted: rgba(21, 183, 158, 0.14);
+  --bg-brand: var(--graffiti-500);
+  --bg-brand-hover: var(--graffiti-600);
+  --bg-accent-subtle: rgba(104, 61, 238, 0.08);
+  --bg-accent: var(--blurple-600);
+  --bg-accent-hover: var(--blurple-700);
+
+  --text-primary: var(--zinc-950);
+  --text-secondary: var(--zinc-600);
+  --text-tertiary: var(--zinc-500);
+  --text-disabled: var(--zinc-400);
+  --text-inverse: var(--zinc-white);
+  --text-on-brand: var(--zinc-white);
+  --text-brand: var(--graffiti-700);
+  --text-accent: var(--blurple-700);
+
+  --border-default: var(--zinc-200);
+  --border-strong: var(--zinc-300);
+  --border-subtle: rgba(0,0,0,0.06);
+  --border-inverse: var(--zinc-700);
+  --border-brand: var(--graffiti-500);
+  --border-accent: var(--blurple-600);
+  --border-focus: var(--graffiti-500);
+
+  --icon-default: var(--zinc-700);
+  --icon-subtle: var(--zinc-400);
+  --icon-disabled: var(--zinc-300);
+  --icon-inverse: var(--zinc-100);
+  --icon-brand: var(--graffiti-600);
+  --icon-accent: var(--blurple-600);
+
+  --input-bg: var(--zinc-white);
+  --input-bg-focus: var(--zinc-white);
+  --input-border: var(--zinc-300);
+  --input-text: var(--zinc-900);
+  --input-placeholder: var(--zinc-400);
+
+  --card-bg: var(--zinc-white);
+  --card-bg-hover: var(--zinc-50);
+  --card-border: var(--zinc-200);
+  --card-active-bg: rgba(21, 183, 158, 0.04);
+  --card-active-border: var(--graffiti-500);
+
+  --tag-bg: var(--zinc-100);
+  --tag-text: var(--zinc-700);
+  --tag-border: var(--zinc-200);
+  --tag-selected-bg: rgba(21, 183, 158, 0.10);
+  --tag-selected-text: var(--graffiti-700);
+  --tag-selected-border: var(--graffiti-500);
+
+  --step-bg: var(--zinc-300);
+  --step-bg-active: var(--graffiti-500);
+  --step-bg-done: var(--graffiti-400);
+
+  --btn-secondary-bg: var(--zinc-white);
+  --btn-secondary-bg-hover: var(--zinc-50);
+  --btn-secondary-text: var(--zinc-900);
+  --btn-secondary-border: var(--zinc-300);
+  --btn-ghost-bg: transparent;
+  --btn-ghost-bg-hover: var(--zinc-100);
+  --btn-ghost-text: var(--zinc-700);
+  --btn-ghost-border: var(--zinc-300);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+}
