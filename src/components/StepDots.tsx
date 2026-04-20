@@ -1,21 +1,21 @@
-interface StepDotsProps {
-  step: number;
-  total?: number;
-}
+import { cx } from "@/utils/cx";
 
-export function StepDots({ step, total = 5 }: StepDotsProps) {
+export function StepDots({ total = 4, current = 1, className = "" }: { total?: number; current?: number; className?: string }) {
   return (
-    <div className="steps-row">
-      <div className="steps-inner">
-        <h4>AI Brand Listing Builder</h4>
-        <div className="steps">
-          {Array.from({ length: total }, (_, i) => {
-            const n = i + 1;
-            const cls = n === step ? "active" : n < step ? "done" : "";
-            return <span key={i} className={`step ${cls}`} />;
-          })}
-        </div>
-      </div>
+    <div className={cx("flex items-center gap-2", className)}>
+      {Array.from({ length: total }, (_, i) => {
+        const step = i + 1;
+        const isActive = step === current;
+        const isDone = step < current;
+        return (
+          <div key={step} className={cx(
+            "rounded-full transition-all duration-300",
+            isActive ? "w-5 h-1.5 bg-[var(--step-bg-active)]"
+              : isDone ? "w-1.5 h-1.5 bg-[var(--step-bg-done)]"
+              : "w-1.5 h-1.5 bg-[var(--step-bg)]"
+          )} />
+        );
+      })}
     </div>
   );
 }

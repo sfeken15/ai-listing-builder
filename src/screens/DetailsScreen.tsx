@@ -1,4 +1,5 @@
 import { StepDots } from "@/components/StepDots";
+import { TextArea } from "@/components/Textarea";
 
 interface DetailsScreenProps {
   description: string;
@@ -10,7 +11,12 @@ export function DetailsScreen({ description, onChange }: DetailsScreenProps) {
 
   return (
     <div className="screen">
-      <StepDots step={5} />
+      <div className="steps-row">
+        <div className="steps-inner">
+          <h4>AI Brand Listing Builder</h4>
+          <StepDots total={5} current={5} />
+        </div>
+      </div>
       <div className="screen-inner">
         <h1 className="heading">What makes you worth visiting?</h1>
         <p className="sub">
@@ -19,12 +25,12 @@ export function DetailsScreen({ description, onChange }: DetailsScreenProps) {
 
         <div style={{ marginTop: 48 }}>
           <div className="textarea-wrap">
-            <textarea
-              className="textarea"
+            <TextArea
               maxLength={max}
               value={description}
-              onChange={(e) => onChange(e.target.value)}
+              onChange={(v) => onChange(v)}
               placeholder="We're a family-owned coffee shop focused on specialty drinks and a relaxed neighborhood vibe. Our beans are roasted weekly, our pastries come from the bakery next door, and we host an open-mic every Thursday…"
+              rows={6}
             />
             <div className="textarea-count">
               {description.length} / {max}

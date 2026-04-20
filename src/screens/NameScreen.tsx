@@ -8,7 +8,12 @@ interface NameScreenProps {
 export function NameScreen({ name, onChange }: NameScreenProps) {
   return (
     <div className="screen">
-      <StepDots step={2} />
+      <div className="steps-row">
+        <div className="steps-inner">
+          <h4>AI Brand Listing Builder</h4>
+          <StepDots total={5} current={2} />
+        </div>
+      </div>
       <div className="screen-inner" style={{ paddingTop: 24 }}>
         <h1 className="heading">What's your business called?</h1>
         <p className="sub">This becomes the primary name on your Explore Joplin listing.</p>

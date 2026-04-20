@@ -186,7 +186,12 @@ export function LocationScreen({ data, onUpdate }: LocationScreenProps) {
 
   return (
     <div className="screen">
-      <StepDots step={3} />
+      <div className="steps-row">
+        <div className="steps-inner">
+          <h4>AI Brand Listing Builder</h4>
+          <StepDots total={5} current={3} />
+        </div>
+      </div>
       <div className="screen-inner">
         <h1 className="heading">Where is your business located?</h1>
         <p className="sub">

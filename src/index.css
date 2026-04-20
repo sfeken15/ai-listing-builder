@@ -17,24 +17,6 @@ html, body {
 button { font-family: inherit; }
 input, textarea { font-family: inherit; }
 
-/* ===== Page scaffold ===== */
-.app {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(800px 500px at 12% 90%, rgba(21,183,158,0.08), transparent 60%),
-    radial-gradient(900px 600px at 92% 8%, rgba(104,61,238,0.08), transparent 62%);
-}
-
 /* ===== Fixed topbar ===== */
 .topbar {
   position: fixed;
@@ -51,28 +33,6 @@ input, textarea { font-family: inherit; }
 }
 [data-theme="light"] .topbar {
   background: rgba(250,250,250,0.7);
-}
-
-.logo { height: 22px; width: auto; display: block; }
-
-.back-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  font: 600 12.5px/1 var(--font-body);
-  cursor: pointer;
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
-.back-pill:hover {
-  background: rgba(255,255,255,0.06);
-  color: var(--text-primary);
-}
-[data-theme="light"] .back-pill:hover {
-  background: rgba(0,0,0,0.04);
 }
 
 /* ===== Screen shell ===== */
@@ -300,22 +260,6 @@ h1.heading {
 
 /* ===== Pills (category selector) ===== */
 .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill {
-  padding: 9px 16px;
-  border-radius: 9999px;
-  border: 1px solid var(--tag-border);
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  font: 500 13.5px/1.2 var(--font-body);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-.pill:hover { background: var(--tag-bg-hover); color: var(--text-primary); }
-.pill.selected {
-  background: var(--tag-bg-selected);
-  color: var(--tag-text-selected);
-  border-color: var(--tag-border-selected);
-}
 
 /* ===== Field ===== */
 .field { margin-bottom: 40px; }
@@ -332,23 +276,6 @@ h1.heading {
   margin-top: 10px;
   font: 400 13px/1.5 var(--font-body);
   color: var(--text-tertiary);
-}
-
-.text-input {
-  width: 100%;
-  padding: 14px 18px;
-  background: var(--input-bg);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
-  color: var(--text-primary);
-  font: 400 15px/1.4 var(--font-body);
-  outline: none;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
-}
-.text-input::placeholder { color: var(--input-placeholder); }
-.text-input:focus {
-  border-color: var(--graffiti-500);
-  background: var(--input-bg-focus);
 }
 
 /* Big display-style input (Name screen) */
@@ -376,26 +303,8 @@ h1.heading {
 }
 [data-theme="light"] .big-input { background: var(--zinc-white); }
 
-/* Textarea */
+/* Textarea count overlay */
 .textarea-wrap { position: relative; }
-.textarea {
-  width: 100%;
-  min-height: 180px;
-  padding: 18px 20px;
-  background: var(--input-bg);
-  border: 1px solid var(--border-default);
-  border-radius: 12px;
-  color: var(--text-primary);
-  font: 400 15px/1.6 var(--font-body);
-  outline: none;
-  resize: vertical;
-  transition: border-color var(--transition-fast), background var(--transition-fast);
-}
-.textarea::placeholder { color: var(--input-placeholder); }
-.textarea:focus {
-  border-color: var(--graffiti-500);
-  background: var(--input-bg-focus);
-}
 .textarea-count {
   position: absolute;
   right: 14px; bottom: 12px;
@@ -403,8 +312,6 @@ h1.heading {
   color: var(--text-tertiary);
   pointer-events: none;
 }
-[data-theme="light"] .text-input,
-[data-theme="light"] .textarea { background: var(--zinc-white); }
 
 /* ===== Fixed floating CTA footer ===== */
 .floating-cta {

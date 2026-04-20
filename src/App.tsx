@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/components/logos/Logo";
+import { PageShell } from "@/components/PageShell";
+import { Button } from "@/components/Button";
 import { ArrowRight, ArrowLeft } from "@/components/Icons";
 import { LandingScreen } from "@/screens/LandingScreen";
 import { NameScreen } from "@/screens/NameScreen";
@@ -43,11 +45,11 @@ const INITIAL_DATA: AppData = {
 function Topbar({ onBack }: { onBack: () => void }) {
   return (
     <header className="topbar">
-      <Logo />
+      <Logo variant="hologram" height={22} />
       <div>
-        <button className="back-pill" type="button" onClick={onBack}>
+        <Button variant="ghost" size="sm" onClick={onBack}>
           Back to dashboard
-        </button>
+        </Button>
       </div>
     </header>
   );
@@ -319,8 +321,7 @@ export default function App() {
   const screenKey = current;
 
   return (
-    <div className="app">
-      <div className="bg-glow" />
+    <PageShell>
       <Topbar onBack={reset} />
 
       <div key={screenKey} className="screen-enter screen-enter-active">
@@ -371,6 +372,6 @@ export default function App() {
         onJump={jumpTo}
         onReset={reset}
       />
-    </div>
+    </PageShell>
   );
 }
