@@ -1,279 +1,241 @@
-/* ============================================================
-   ZINC DESIGN SYSTEM — TOKENS
-   ============================================================ */
+/* ============================================================================
+   ZINC DESIGN SYSTEM — COLORS + TYPOGRAPHY TOKENS
+   Brand: Explore Joplin
+   Primary: Graffiti (teal/mint) — 20% of UI
+   Secondary: Blurple (purple) — 10% of UI
+   Neutral: Zinc — 70% of UI
+   Dark mode is the DEFAULT. Light mode opt-in via [data-theme="light"].
+   ============================================================================ */
 
-/* ---------- Primitive Tokens (never use directly) ---------- */
-:root {
-  /* Zinc neutral */
-  --zinc-white: #ffffff;
-  --zinc-50: #fafafa;
-  --zinc-100: #f4f4f5;
-  --zinc-200: #e4e4e7;
-  --zinc-300: #d4d4d8;
-  --zinc-400: #a1a1aa;
-  --zinc-500: #71717a;
-  --zinc-600: #52525b;
-  --zinc-700: #3f3f46;
-  --zinc-800: #27272a;
-  --zinc-850: #1e1e21;
-  --zinc-900: #18181b;
-  --zinc-950: #09090b;
-  --zinc-black: #000000;
-
-  /* Graffiti (Teal / Primary) */
-  --graffiti-50: #f0fdf9;
-  --graffiti-100: #ccfbef;
-  --graffiti-200: #99f6df;
-  --graffiti-300: #5fe9d0;
-  --graffiti-400: #2dd4bf;
-  --graffiti-500: #15b79e;
-  --graffiti-600: #0d9488;
-  --graffiti-700: #107569;
-  --graffiti-800: #115e56;
-  --graffiti-900: #134e48;
-
-  /* Blurple (Purple / Secondary) */
-  --blurple-50: #f0edff;
-  --blurple-100: #dee0ff;
-  --blurple-200: #c5c2ff;
-  --blurple-300: #a99dff;
-  --blurple-400: #8d81ff;
-  --blurple-500: #7c6fef;
-  --blurple-600: #683dee;
-  --blurple-700: #5228d0;
-  --blurple-800: #4020a8;
-  --blurple-900: #311880;
-
-  /* Alpha channels */
-  --zinc-alpha-50: rgba(255,255,255,0.04);
-  --zinc-alpha-100: rgba(255,255,255,0.06);
-  --zinc-alpha-200: rgba(255,255,255,0.08);
-  --zinc-alpha-300: rgba(255,255,255,0.12);
-
-  /* Hologram gradient */
-  --hologram: linear-gradient(90deg, #60a5fa 0%, #34d399 25%, #a78bfa 50%, #f9a8d4 75%, #93c5fd 100%);
-
-  /* Typography */
-  --font-sans: "General Sans", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
-
-  /* Transitions */
-  --transition-fast: 100ms ease;
-  --transition-default: 200ms ease;
-  --transition-slow: 300ms ease;
+/* -------- Fonts -------- */
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* ---------- Semantic Tokens — Dark Mode (default) ---------- */
-:root,
-.dark,
-[data-theme="dark"] {
-  /* Backgrounds */
-  --bg-page: #0d0d0f;
-  --bg-surface: var(--zinc-900);
-  --bg-surface-raised: var(--zinc-850);
-  --bg-surface-overlay: var(--zinc-800);
-  --bg-subtle: var(--zinc-alpha-100);
-  --bg-muted: var(--zinc-alpha-200);
-  --bg-inverse: var(--zinc-white);
-  --bg-brand-subtle: rgba(21, 183, 158, 0.08);
-  --bg-brand-muted: rgba(21, 183, 158, 0.14);
-  --bg-brand: var(--graffiti-500);
-  --bg-brand-hover: var(--graffiti-600);
-  --bg-accent-subtle: rgba(104, 61, 238, 0.08);
-  --bg-accent-muted: rgba(104, 61, 238, 0.14);
-  --bg-accent: var(--blurple-600);
-  --bg-accent-hover: var(--blurple-700);
+:root {
+  /* ---------- Zinc (neutrals) ---------- */
+  --zinc-white: #FFFFFF;
+  --zinc-50: #FAFAFA;
+  --zinc-100: #F4F4F5;
+  --zinc-200: #E4E4E7;
+  --zinc-300: #D4D4D8;
+  --zinc-400: #A1A1AA;
+  --zinc-500: #71717A;
+  --zinc-600: #52525B;
+  --zinc-700: #3F3F46;
+  --zinc-800: #27272A;
+  --zinc-900: #18181B;
+  --zinc-950: #09090B;
+  --zinc-black: #000000;
 
-  /* Text */
+  /* ---------- Graffiti (primary teal) ---------- */
+  --graffiti-100: #CCFBEF;
+  --graffiti-300: #5FE9D0;
+  --graffiti-500: #15B79E;
+  --graffiti-700: #107569;
+
+  /* ---------- Blurple (secondary purple) ---------- */
+  --blurple-100: #DEE0FF;
+  --blurple-400: #8D81FF;
+  --blurple-600: #683DEE;
+
+  /* ---------- Alpha scales ---------- */
+  --zinc-alpha-50: rgba(255,255,255,0.05);
+  --zinc-alpha-100: rgba(255,255,255,0.08);
+  --zinc-alpha-200: rgba(255,255,255,0.12);
+  --zinc-alpha-300: rgba(255,255,255,0.16);
+  --zinc-alpha-400: rgba(255,255,255,0.24);
+
+  /* ---------- Hologram gradient ---------- */
+  --gradient-hologram: linear-gradient(
+    90deg,
+    #B6D0F7 0%,
+    #EEF4E1 15%,
+    #BAE4E2 32%,
+    #FAFCFE 55%,
+    #E2C1F9 76%,
+    #B6D0F7 100%
+  );
+
+  /* ---------- Typography ---------- */
+  --font-display: "General Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "General Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: 100ms linear;
+  --transition-default: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* =========================================================================
+     SEMANTIC TOKENS — DARK MODE (DEFAULT)
+     ========================================================================= */
+  --bg-page: var(--zinc-950);
+  --bg-surface: var(--zinc-900);
+  --bg-surface-raised: var(--zinc-800);
+  --bg-subtle: var(--zinc-800);
+  --bg-muted: var(--zinc-700);
+  --bg-inverse: var(--zinc-50);
+  --bg-brand-subtle: rgba(21,183,158,0.12);
+  --bg-brand-muted: rgba(21,183,158,0.20);
+  --bg-brand-default: var(--graffiti-500);
+  --bg-brand-hover: var(--graffiti-300);
+  --bg-accent-subtle: rgba(104,61,238,0.15);
+  --bg-accent-default: var(--blurple-400);
+
   --text-primary: var(--zinc-50);
-  --text-secondary: var(--zinc-400);
+  --text-secondary: var(--zinc-300);
   --text-tertiary: var(--zinc-500);
   --text-disabled: var(--zinc-600);
   --text-inverse: var(--zinc-950);
-  --text-on-brand: var(--zinc-white);
-  --text-brand: var(--graffiti-400);
+  --text-on-brand: var(--zinc-950);
+  --text-brand: var(--graffiti-300);
   --text-accent: var(--blurple-400);
 
-  /* Borders */
   --border-default: var(--zinc-800);
   --border-strong: var(--zinc-700);
-  --border-subtle: var(--zinc-alpha-100);
+  --border-subtle: rgba(255,255,255,0.06);
   --border-inverse: var(--zinc-200);
-  --border-brand: var(--graffiti-600);
-  --border-accent: var(--blurple-600);
-  --border-focus: var(--graffiti-500);
+  --border-brand: var(--graffiti-500);
+  --border-focus: var(--graffiti-300);
 
-  /* Icons */
   --icon-default: var(--zinc-300);
   --icon-subtle: var(--zinc-500);
-  --icon-disabled: var(--zinc-700);
-  --icon-inverse: var(--zinc-900);
-  --icon-brand: var(--graffiti-400);
-  --icon-accent: var(--blurple-400);
+  --icon-brand: var(--graffiti-300);
 
-  /* Status */
-  --status-success-bg: rgba(21, 183, 158, 0.12);
-  --status-success-text: var(--graffiti-300);
-  --status-warning-bg: rgba(251, 191, 36, 0.12);
-  --status-warning-text: #fbbf24;
-  --status-error-bg: rgba(239, 68, 68, 0.12);
-  --status-error-text: #f87171;
-  --status-info-bg: rgba(96, 165, 250, 0.12);
-  --status-info-text: #93c5fd;
-
-  /* Component — Buttons */
-  --btn-primary-bg: var(--graffiti-500);
-  --btn-primary-bg-hover: var(--graffiti-600);
-  --btn-primary-text: var(--zinc-white);
-  --btn-secondary-bg: var(--zinc-alpha-100);
-  --btn-secondary-bg-hover: var(--zinc-alpha-200);
-  --btn-secondary-text: var(--zinc-100);
-  --btn-secondary-border: var(--zinc-800);
+  /* Buttons */
+  --btn-primary-bg: #ffffff;
+  --btn-primary-bg-hover: #d4d4d8;
+  --btn-primary-text: #09090b;
+  --btn-secondary-bg: #27272a;
+  --btn-secondary-bg-hover: #3f3f46;
+  --btn-secondary-text: #ffffff;
   --btn-ghost-bg: transparent;
-  --btn-ghost-bg-hover: var(--zinc-alpha-100);
-  --btn-ghost-text: var(--zinc-300);
-  --btn-ghost-border: var(--zinc-800);
-  --btn-accent-bg: var(--blurple-600);
-  --btn-accent-bg-hover: var(--blurple-700);
-  --btn-accent-text: var(--zinc-white);
-  --btn-destructive-bg: #dc2626;
-  --btn-destructive-bg-hover: #b91c1c;
-  --btn-destructive-text: var(--zinc-white);
-  --btn-destructive-outline-bg: transparent;
-  --btn-destructive-outline-bg-hover: rgba(239, 68, 68, 0.08);
-  --btn-destructive-outline-text: #f87171;
-  --btn-destructive-outline-border: #dc2626;
-  --btn-destructive-ghost-bg: transparent;
-  --btn-destructive-ghost-bg-hover: rgba(239, 68, 68, 0.08);
-  --btn-destructive-ghost-text: #f87171;
-  --btn-destructive-link-text: #f87171;
-  --btn-destructive-link-text-hover: #fca5a5;
+  --btn-ghost-bg-hover: rgba(255,255,255,0.06);
+  --btn-ghost-text: #ffffff;
+  --btn-ghost-border: #3f3f46;
+  --btn-accent-bg: #15b79e;
+  --btn-accent-bg-hover: #0e9384;
+  --btn-accent-text: #09090b;
 
-  /* Component — Inputs */
-  --input-bg: var(--zinc-alpha-50);
-  --input-bg-focus: var(--zinc-alpha-100);
+  /* Inputs */
+  --input-bg: rgba(255,255,255,0.04);
+  --input-bg-focus: rgba(255,255,255,0.06);
   --input-border: var(--zinc-800);
   --input-border-focus: var(--graffiti-500);
-  --input-text: var(--zinc-100);
+  --input-text: var(--zinc-50);
   --input-placeholder: var(--zinc-600);
-  --input-radius: 0.75rem;
+  --input-radius: var(--radius-lg);
 
-  /* Component — Cards */
-  --card-bg: var(--zinc-900);
-  --card-bg-hover: var(--zinc-850);
+  /* Cards */
+  --card-bg: rgba(255,255,255,0.03);
+  --card-bg-hover: rgba(255,255,255,0.05);
   --card-border: var(--zinc-800);
-  --card-active-bg: rgba(21, 183, 158, 0.06);
-  --card-active-border: var(--graffiti-600);
-  --card-radius: 1rem;
+  --card-border-active: var(--graffiti-500);
+  --card-radius: var(--radius-xl);
 
-  /* Component — Badges */
-  --badge-brand-bg: rgba(21, 183, 158, 0.14);
-  --badge-brand-text: var(--graffiti-300);
-  --badge-accent-bg: rgba(104, 61, 238, 0.14);
-  --badge-accent-text: var(--blurple-300);
-  --badge-neutral-bg: var(--zinc-alpha-200);
-  --badge-neutral-text: var(--zinc-400);
-  --badge-success-bg: rgba(21, 183, 158, 0.12);
-  --badge-success-text: var(--graffiti-300);
-  --badge-warning-bg: rgba(251, 191, 36, 0.12);
-  --badge-warning-text: #fbbf24;
-  --badge-error-bg: rgba(239, 68, 68, 0.12);
-  --badge-error-text: #f87171;
+  /* Tags / pills */
+  --tag-bg: transparent;
+  --tag-bg-hover: rgba(255,255,255,0.06);
+  --tag-bg-selected: var(--zinc-white);
+  --tag-border: var(--zinc-700);
+  --tag-border-selected: var(--zinc-white);
+  --tag-text: var(--zinc-400);
+  --tag-text-selected: var(--zinc-950);
 
-  /* Component — Tags */
-  --tag-bg: var(--zinc-alpha-100);
-  --tag-text: var(--zinc-300);
-  --tag-border: var(--zinc-800);
-  --tag-selected-bg: rgba(21, 183, 158, 0.12);
-  --tag-selected-text: var(--graffiti-300);
-  --tag-selected-border: var(--graffiti-700);
-
-  /* Component — Step Indicators */
+  /* Step dots */
   --step-bg: var(--zinc-700);
-  --step-bg-active: var(--graffiti-500);
-  --step-bg-done: var(--graffiti-700);
+  --step-bg-active: var(--zinc-white);
+  --step-bg-done: var(--zinc-500);
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.5);
 }
 
-/* ---------- Light Mode ---------- */
-.light,
+/* =========================================================================
+   LIGHT MODE
+   ========================================================================= */
 [data-theme="light"] {
   --bg-page: var(--zinc-50);
   --bg-surface: var(--zinc-white);
   --bg-surface-raised: var(--zinc-50);
-  --bg-surface-overlay: var(--zinc-100);
-  --bg-subtle: rgba(0,0,0,0.03);
-  --bg-muted: rgba(0,0,0,0.05);
+  --bg-subtle: var(--zinc-100);
+  --bg-muted: var(--zinc-200);
   --bg-inverse: var(--zinc-950);
-  --bg-brand-subtle: rgba(21, 183, 158, 0.08);
-  --bg-brand-muted: rgba(21, 183, 158, 0.14);
-  --bg-brand: var(--graffiti-500);
-  --bg-brand-hover: var(--graffiti-600);
-  --bg-accent-subtle: rgba(104, 61, 238, 0.08);
-  --bg-accent: var(--blurple-600);
-  --bg-accent-hover: var(--blurple-700);
+  --bg-brand-subtle: #CCFBEF;
 
   --text-primary: var(--zinc-950);
-  --text-secondary: var(--zinc-600);
+  --text-secondary: var(--zinc-700);
   --text-tertiary: var(--zinc-500);
   --text-disabled: var(--zinc-400);
   --text-inverse: var(--zinc-white);
-  --text-on-brand: var(--zinc-white);
   --text-brand: var(--graffiti-700);
-  --text-accent: var(--blurple-700);
+  --text-accent: var(--blurple-600);
 
   --border-default: var(--zinc-200);
   --border-strong: var(--zinc-300);
-  --border-subtle: rgba(0,0,0,0.06);
-  --border-inverse: var(--zinc-700);
+  --border-subtle: var(--zinc-100);
   --border-brand: var(--graffiti-500);
-  --border-accent: var(--blurple-600);
-  --border-focus: var(--graffiti-500);
 
-  --icon-default: var(--zinc-700);
-  --icon-subtle: var(--zinc-400);
-  --icon-disabled: var(--zinc-300);
-  --icon-inverse: var(--zinc-100);
-  --icon-brand: var(--graffiti-600);
-  --icon-accent: var(--blurple-600);
+  --btn-primary-bg: #000000;
+  --btn-primary-bg-hover: #3f3f46;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #f4f4f5;
+  --btn-secondary-bg-hover: #e4e4e7;
+  --btn-secondary-text: #09090b;
+  --btn-ghost-bg-hover: rgba(0,0,0,0.04);
+  --btn-ghost-text: #09090b;
+  --btn-ghost-border: #d4d4d8;
+  --btn-accent-bg: #0e9384;
+  --btn-accent-bg-hover: #107569;
+  --btn-accent-text: #ffffff;
 
   --input-bg: var(--zinc-white);
-  --input-bg-focus: var(--zinc-white);
-  --input-border: var(--zinc-300);
-  --input-text: var(--zinc-900);
+  --input-border: var(--zinc-200);
+  --input-text: var(--zinc-950);
   --input-placeholder: var(--zinc-400);
 
   --card-bg: var(--zinc-white);
   --card-bg-hover: var(--zinc-50);
   --card-border: var(--zinc-200);
-  --card-active-bg: rgba(21, 183, 158, 0.04);
-  --card-active-border: var(--graffiti-500);
 
-  --tag-bg: var(--zinc-100);
-  --tag-text: var(--zinc-700);
+  --tag-bg-hover: var(--zinc-100);
+  --tag-bg-selected: var(--zinc-950);
   --tag-border: var(--zinc-200);
-  --tag-selected-bg: rgba(21, 183, 158, 0.10);
-  --tag-selected-text: var(--graffiti-700);
-  --tag-selected-border: var(--graffiti-500);
+  --tag-border-selected: var(--zinc-950);
+  --tag-text: var(--zinc-700);
+  --tag-text-selected: var(--zinc-white);
 
-  --step-bg: var(--zinc-300);
-  --step-bg-active: var(--graffiti-500);
-  --step-bg-done: var(--graffiti-400);
+  --step-bg: var(--zinc-200);
+  --step-bg-active: var(--zinc-950);
+  --step-bg-done: var(--zinc-400);
 
-  --btn-secondary-bg: var(--zinc-white);
-  --btn-secondary-bg-hover: var(--zinc-50);
-  --btn-secondary-text: var(--zinc-900);
-  --btn-secondary-border: var(--zinc-300);
-  --btn-ghost-bg: transparent;
-  --btn-ghost-bg-hover: var(--zinc-100);
-  --btn-ghost-text: var(--zinc-700);
-  --btn-ghost-border: var(--zinc-300);
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.10);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.08);
 }

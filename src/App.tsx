@@ -1,195 +1,226 @@
 import { useState } from "react";
-import { PageShell } from "@/components/PageShell";
-import { ToolHeader } from "@/components/ToolHeader";
-import { ToolFooter } from "@/components/ToolFooter";
-import { Button } from "@/components/Button";
-import { StepDots } from "@/components/StepDots";
-import { Step1PropertyType } from "@/steps/Step1PropertyType";
-import { Step2PropertyDetails } from "@/steps/Step2PropertyDetails";
-import { Step3Features } from "@/steps/Step3Features";
-import { Step4StyleTone } from "@/steps/Step4StyleTone";
-import { Step5Generate } from "@/steps/Step5Generate";
-import type { PropertyDetails } from "@/steps/Step2PropertyDetails";
-import type { Step4Data } from "@/steps/Step4StyleTone";
+import { Logo } from "@/components/Logo";
+import { ArrowRight, ArrowLeft } from "@/components/Icons";
+import { LandingScreen } from "@/screens/LandingScreen";
+import { NameScreen } from "@/screens/NameScreen";
+import { LocationScreen } from "@/screens/LocationScreen";
+import { BasicsScreen } from "@/screens/BasicsScreen";
+import { DetailsScreen } from "@/screens/DetailsScreen";
+import { LoadingScreen } from "@/screens/LoadingScreen";
+import { DoneScreen } from "@/screens/DoneScreen";
 
-const TOTAL_STEPS = 5;
+type Screen = "landing" | "name" | "location" | "basics" | "details" | "loading" | "done";
+const SCREENS: Screen[] = ["landing", "name", "location", "basics", "details", "loading", "done"];
 
-const stepMeta = [
-  { label: "Property type", short: "Type" },
-  { label: "Property details", short: "Details" },
-  { label: "Features", short: "Features" },
-  { label: "Style & tone", short: "Style" },
-  { label: "Generate listing", short: "Generate" },
-];
+interface AppData {
+  pitch: string;
+  name: string;
+  address: string;
+  addressParts?: {
+    country: string;
+    street: string;
+    apt: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
+  precise: boolean;
+  category: string;
+  website: string;
+  description: string;
+}
+
+const INITIAL_DATA: AppData = {
+  pitch: "",
+  name: "",
+  address: "",
+  precise: false,
+  category: "",
+  website: "",
+  description: "",
+};
+
+function Topbar({ onBack }: { onBack: () => void }) {
+  return (
+    <header className="topbar">
+      <Logo />
+      <div>
+        <button className="back-pill" type="button" onClick={onBack}>
+          Back to dashboard
+        </button>
+      </div>
+    </header>
+  );
+}
+
+interface FloatingCTAProps {
+  onClick: () => void;
+  disabled: boolean;
+  label: string;
+  accent?: boolean;
+  showBack?: boolean;
+  onBack?: () => void;
+}
+
+function FloatingCTA({ onClick, disabled, label, accent, showBack, onBack }: FloatingCTAProps) {
+  return (
+    <div className="floating-cta">
+      <span className="footer-legal">
+        © 2026 Explore Joplin. Made with ♥ in Joplin for Joplin.
+      </span>
+      <div className="footer-actions">
+        {showBack && onBack && (
+          <button className="cta-back" type="button" onClick={onBack}>
+            <ArrowLeft />
+            Back
+          </button>
+        )}
+        <button
+          className={`cta-btn ${accent ? "accent" : ""}`}
+          type="button"
+          onClick={onClick}
+          disabled={disabled}
+        >
+          {label}
+          <ArrowRight />
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
-  const [step, setStep] = useState(1);
+  const [screenIdx, setScreenIdx] = useState(0);
+  const [data, setData] = useState<AppData>(INITIAL_DATA);
 
-  const [propertyType, setPropertyType] = useState("");
+  const current = SCREENS[screenIdx];
 
-  const [details, setDetails] = useState<PropertyDetails>({
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    bedrooms: "",
-    bathrooms: "",
-    sqft: "",
-    yearBuilt: "",
-    listingPrice: "",
-  });
-
-  const [features, setFeatures] = useState<Set<string>>(new Set());
-
-  const [styleData, setStyleData] = useState<Step4Data>({
-    tone: "professional",
-    highlights: new Set(),
-    extraNotes: "",
-  });
-
-  function handleDetailChange(field: keyof PropertyDetails, value: string) {
-    setDetails((prev) => ({ ...prev, [field]: value }));
+  function next() {
+    setScreenIdx((i) => Math.min(i + 1, SCREENS.length - 1));
+  }
+  function back() {
+    setScreenIdx((i) => Math.max(i - 1, 0));
+  }
+  function reset() {
+    setScreenIdx(0);
+    setData(INITIAL_DATA);
   }
 
-  function handleFeatureToggle(feature: string) {
-    setFeatures((prev) => {
-      const next = new Set(prev);
-      if (next.has(feature)) {
-        next.delete(feature);
-      } else {
-        next.add(feature);
-      }
-      return next;
-    });
+  function updateData(patch: Partial<AppData>) {
+    setData((prev) => ({ ...prev, ...patch }));
   }
 
-  function handleHighlightToggle(h: string) {
-    setStyleData((prev) => {
-      const next = new Set(prev.highlights);
-      if (next.has(h)) {
-        next.delete(h);
-      } else {
-        next.add(h);
-      }
-      return { ...prev, highlights: next };
-    });
-  }
+  const ctaConfig = (() => {
+    switch (current) {
+      case "landing":
+        return {
+          visible: true,
+          label: "Continue",
+          disabled: !(data.pitch && data.pitch.trim().length > 2),
+          accent: false,
+          showBack: false,
+        };
+      case "name":
+        return {
+          visible: true,
+          label: "Continue",
+          disabled: !(data.name && data.name.trim().length > 1),
+          accent: false,
+          showBack: true,
+        };
+      case "location":
+        return {
+          visible: true,
+          label: "Continue",
+          disabled: !(data.address && data.address.trim().length > 3),
+          accent: false,
+          showBack: true,
+        };
+      case "basics":
+        return {
+          visible: true,
+          label: "Continue",
+          disabled: !data.category,
+          accent: false,
+          showBack: true,
+        };
+      case "details":
+        return {
+          visible: true,
+          label: "Build my listing",
+          disabled: !(data.description && data.description.trim().length > 20),
+          accent: true,
+          showBack: true,
+        };
+      case "loading":
+        return {
+          visible: true,
+          label: "Building…",
+          disabled: true,
+          accent: false,
+          showBack: false,
+        };
+      case "done":
+        return {
+          visible: true,
+          label: "Go to my dashboard",
+          disabled: false,
+          accent: false,
+          showBack: false,
+        };
+      default:
+        return { visible: false, label: "", disabled: true, accent: false, showBack: false };
+    }
+  })();
 
-  function canAdvance() {
-    if (step === 1) return Boolean(propertyType);
-    if (step === 2) return Boolean(details.address && details.city && details.listingPrice);
-    if (step === 3) return true;
-    if (step === 4) return Boolean(styleData.tone);
-    return false;
-  }
-
-  function handleNext() {
-    if (step < TOTAL_STEPS) setStep(step + 1);
-  }
-
-  function handleBack() {
-    if (step > 1) setStep(step - 1);
-  }
+  const screenKey = current;
 
   return (
-    <PageShell>
-      <ToolHeader toolName="AI Listing Builder" />
+    <div className="app">
+      <div className="bg-glow" />
+      <Topbar onBack={reset} />
 
-      <main className="flex-1 flex flex-col items-center justify-start px-4 pb-4">
-        <div className="w-full max-w-2xl flex flex-col gap-0">
-          {/* Step indicator */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <StepDots total={TOTAL_STEPS} current={step} />
-              <span className="text-xs text-[var(--text-tertiary)] font-medium">
-                Step {step} of {TOTAL_STEPS}
-              </span>
-            </div>
-            <span className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-widest">
-              {stepMeta[step - 1].short}
-            </span>
-          </div>
+      <div key={screenKey} className="screen-enter screen-enter-active">
+        {current === "landing" && (
+          <LandingScreen pitch={data.pitch} onChange={(v) => updateData({ pitch: v })} />
+        )}
+        {current === "name" && (
+          <NameScreen name={data.name} onChange={(v) => updateData({ name: v })} />
+        )}
+        {current === "location" && (
+          <LocationScreen
+            data={{ address: data.address, addressParts: data.addressParts, precise: data.precise }}
+            onUpdate={(patch) => updateData(patch as Partial<AppData>)}
+          />
+        )}
+        {current === "basics" && (
+          <BasicsScreen
+            category={data.category}
+            website={data.website}
+            onCategoryChange={(v) => updateData({ category: v })}
+            onWebsiteChange={(v) => updateData({ website: v })}
+          />
+        )}
+        {current === "details" && (
+          <DetailsScreen
+            description={data.description}
+            onChange={(v) => updateData({ description: v })}
+          />
+        )}
+        {current === "loading" && <LoadingScreen onDone={next} />}
+        {current === "done" && <DoneScreen />}
+      </div>
 
-          {/* Step content */}
-          <div className="rounded-2xl border border-[var(--border-default)] bg-[var(--bg-surface)] p-6 sm:p-8">
-            {step === 1 && (
-              <Step1PropertyType selected={propertyType} onSelect={setPropertyType} />
-            )}
-            {step === 2 && (
-              <Step2PropertyDetails details={details} onChange={handleDetailChange} />
-            )}
-            {step === 3 && (
-              <Step3Features selected={features} onToggle={handleFeatureToggle} />
-            )}
-            {step === 4 && (
-              <Step4StyleTone
-                data={styleData}
-                onToneSelect={(tone) => setStyleData((p) => ({ ...p, tone }))}
-                onHighlightToggle={handleHighlightToggle}
-                onNotesChange={(v) => setStyleData((p) => ({ ...p, extraNotes: v }))}
-              />
-            )}
-            {step === 5 && (
-              <Step5Generate
-                propertyType={propertyType}
-                details={details}
-                features={features}
-                styleData={styleData}
-              />
-            )}
-          </div>
-        </div>
-      </main>
-
-      <ToolFooter>
-        <div className="w-full max-w-2xl mx-auto flex items-center justify-between">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleBack}
-            disabled={step === 1}
-          >
-            ← Back
-          </Button>
-
-          <div className="flex items-center gap-3">
-            {step < TOTAL_STEPS ? (
-              <Button
-                variant="primary"
-                size="sm"
-                onClick={handleNext}
-                disabled={!canAdvance()}
-              >
-                {step === 4 ? "Generate listing →" : "Continue →"}
-              </Button>
-            ) : (
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => {
-                  setStep(1);
-                  setPropertyType("");
-                  setDetails({
-                    address: "",
-                    city: "",
-                    state: "",
-                    zip: "",
-                    bedrooms: "",
-                    bathrooms: "",
-                    sqft: "",
-                    yearBuilt: "",
-                    listingPrice: "",
-                  });
-                  setFeatures(new Set());
-                  setStyleData({ tone: "professional", highlights: new Set(), extraNotes: "" });
-                }}
-              >
-                Start over
-              </Button>
-            )}
-          </div>
-        </div>
-      </ToolFooter>
-    </PageShell>
+      {ctaConfig.visible && (
+        <FloatingCTA
+          onClick={current === "done" ? reset : next}
+          disabled={ctaConfig.disabled}
+          label={ctaConfig.label}
+          accent={ctaConfig.accent}
+          showBack={ctaConfig.showBack}
+          onBack={back}
+        />
+      )}
+    </div>
   );
 }
